@@ -24,16 +24,7 @@ fn part1(lines: &Vec<Line>) -> i32 {
             draw_line(*line, &mut board)
         }
     }
-    let mut count = 0;
-    for row in board {
-        for i in row {
-            if i > 1 {
-                count += 1;
-            }
-        }
-    }
-
-    count
+    board.iter().flatten().filter(|&x| x > &1).count() as i32
 }
 
 fn part2(lines: &Vec<Line>) -> i32 {
@@ -41,16 +32,7 @@ fn part2(lines: &Vec<Line>) -> i32 {
     for line in lines {
         draw_line(*line, &mut board)
     }
-    let mut count = 0;
-    for row in board {
-        for i in row {
-            if i > 1 {
-                count += 1;
-            }
-        }
-    }
-
-    count
+    board.iter().flatten().filter(|&x| x > &1).count() as i32
 }
 
 fn main() {
