@@ -1,11 +1,11 @@
-fn count_ones(numbers: &Vec<&str>, bit: usize) -> i32 {
+fn count_ones(numbers: &[&str], bit: usize) -> i32 {
     numbers
         .iter()
         .map(|num| (num.chars().nth(bit).unwrap() == '1') as i32)
         .sum()
 }
 
-fn part1(numbers: &Vec<&str>) -> i32 {
+fn part1(numbers: &[&str]) -> i32 {
     let mut gamma: u32 = 0;
     let mut eps: u32 = 0;
     for bit in 0..12 {
@@ -19,8 +19,8 @@ fn part1(numbers: &Vec<&str>) -> i32 {
     (gamma * eps) as i32
 }
 
-fn part2(numbers: &Vec<&str>) -> i32 {
-    let mut oxygen_numbers = numbers.clone();
+fn part2(numbers: &[&str]) -> i32 {
+    let mut oxygen_numbers = Vec::from(numbers);
     let mut bit = 0;
     while oxygen_numbers.len() > 1 {
         let ones = count_ones(numbers, bit);
@@ -35,7 +35,7 @@ fn part2(numbers: &Vec<&str>) -> i32 {
             .collect();
         bit += 1;
     }
-    let mut co2_numbers = numbers.clone();
+    let mut co2_numbers = Vec::from(numbers);
     let mut bit = 0;
     while co2_numbers.len() > 1 {
         let ones = count_ones(numbers, bit);
@@ -57,7 +57,7 @@ fn part2(numbers: &Vec<&str>) -> i32 {
 }
 
 fn main() {
-    let numbers = include_str!("../../data/day3.txt").split('\n').collect();
+    let numbers: Vec<_> = include_str!("../../data/day3.txt").split('\n').collect();
 
     println!("Part 1: {:?}", part1(&numbers));
     println!("Part 2: {:?}", part2(&numbers));

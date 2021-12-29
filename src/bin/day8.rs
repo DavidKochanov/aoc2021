@@ -3,7 +3,7 @@ use std::{
     panic,
 };
 
-fn part1(lines: &Vec<(&str, &str)>) -> usize {
+fn part1(lines: &[(&str, &str)]) -> usize {
     lines
         .iter()
         .map(|&(_, out)| {
@@ -15,12 +15,12 @@ fn part1(lines: &Vec<(&str, &str)>) -> usize {
         .sum()
 }
 
-fn part2(lines: &Vec<(&str, &str)>) -> usize {
+fn part2(lines: &[(&str, &str)]) -> usize {
     let mut total = 0;
     for &(inp, out) in lines.iter() {
         let parse_sets = |x: &str| {
             x.split_whitespace()
-                .map(|x| BTreeSet::from_iter(x.chars().into_iter()))
+                .map(|x| BTreeSet::from_iter(x.chars()))
                 .collect()
         };
         let inp_sets: Vec<BTreeSet<char>> = parse_sets(inp);

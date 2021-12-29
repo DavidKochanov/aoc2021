@@ -42,8 +42,8 @@ fn main() {
     let mut cave_graph = HashMap::new();
     for line in include_str!("../../data/day12.txt").split('\n') {
         let (v1, v2) = line.split_once('-').unwrap();
-        cave_graph.entry(v1).or_insert(Vec::new()).push(v2);
-        cave_graph.entry(v2).or_insert(Vec::new()).push(v1);
+        cave_graph.entry(v1).or_insert_with(Vec::new).push(v2);
+        cave_graph.entry(v2).or_insert_with(Vec::new).push(v1);
     }
     println!("{:?}", part1(&cave_graph));
     println!("{:?}", part2(&cave_graph));

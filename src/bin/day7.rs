@@ -1,4 +1,4 @@
-fn part1(crabs: &Vec<i32>) -> i32 {
+fn part1(crabs: &[i32]) -> i32 {
     let min = *crabs.iter().min().unwrap() as usize;
     let max = *crabs.iter().max().unwrap() as usize;
 
@@ -8,7 +8,7 @@ fn part1(crabs: &Vec<i32>) -> i32 {
         .unwrap()
 }
 
-fn part2(crabs: &Vec<i32>) -> i32 {
+fn part2(crabs: &[i32]) -> i32 {
     let min = *crabs.iter().min().unwrap() as usize;
     let max = *crabs.iter().max().unwrap() as usize;
 

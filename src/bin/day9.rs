@@ -9,15 +9,11 @@ struct HeightMap {
 }
 
 impl HeightMap {
-    fn new(heights_vec: Vec<Vec<u32>>) -> Self {
+    fn new(h: Vec<Vec<u32>>) -> Self {
         Self {
-            height: heights_vec.len() as isize,
-            width: if heights_vec.len() > 0 {
-                heights_vec[0].len() as isize
-            } else {
-                0
-            },
-            heights: heights_vec,
+            height: h.len() as isize,
+            width: if h.is_empty() { 0 } else { h[0].len() as isize },
+            heights: h,
         }
     }
 
@@ -82,7 +78,7 @@ fn part2(m: &HeightMap) -> usize {
         }
         sizes.push(visited.len());
     }
-    sizes.sort();
+    sizes.sort_unstable();
     sizes[sizes.len() - 3..sizes.len()].iter().product()
 }
 

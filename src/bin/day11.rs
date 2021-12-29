@@ -7,15 +7,11 @@ struct Grid {
     width: isize,
 }
 impl Grid {
-    fn new(grid: Vec<Vec<u32>>) -> Self {
+    fn new(g: Vec<Vec<u32>>) -> Self {
         Self {
-            height: grid.len() as isize,
-            width: if grid.len() > 0 {
-                grid[0].len() as isize
-            } else {
-                0
-            },
-            grid: grid,
+            height: g.len() as isize,
+            width: if g.is_empty() { 0 } else { g[0].len() as isize },
+            grid: g,
         }
     }
 

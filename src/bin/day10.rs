@@ -48,17 +48,17 @@ fn get_score(line: &str) -> (i64, i64) {
     (0, stack_score)
 }
 
-fn part1(lines: &Vec<&str>) -> i64 {
+fn part1(lines: &[&str]) -> i64 {
     lines.iter().map(|&l| get_score(l).0).sum()
 }
 
-fn part2(lines: &Vec<&str>) -> i64 {
+fn part2(lines: &[&str]) -> i64 {
     let mut scores: Vec<i64> = lines
         .iter()
         .map(|&l| get_score(l).1)
         .filter(|&score| score >= 0)
         .collect();
-    scores.sort();
+    scores.sort_unstable();
     scores[scores.len() / 2]
 }
 

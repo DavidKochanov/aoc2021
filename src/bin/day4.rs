@@ -15,7 +15,6 @@ fn part2(numbers: &[i32], boards: Vec<Board>) -> i32 {
     let mut left = boards.len();
     for &num in numbers {
         let mut new_boards = Vec::new();
-        let l = boards.len();
         for board in boards.iter_mut() {
             board.call(num);
             if board.has_won() {
@@ -91,7 +90,7 @@ fn main() {
         .map(|x| x.parse::<i32>().unwrap())
         .collect::<Vec<i32>>();
 
-    let mut boards: Vec<Board> = boards.chunks(25).map(|chunk| Board::new(chunk)).collect();
+    let mut boards: Vec<Board> = boards.chunks(25).map(Board::new).collect();
 
     println!("{:?}", part1(&numbers, &mut boards));
     println!("{:?}", part2(&numbers, boards));

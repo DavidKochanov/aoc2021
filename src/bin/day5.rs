@@ -17,8 +17,8 @@ fn draw_line(line: Line, board: &mut Vec<[i32; 1024]>) {
     board[c_x][c_y] += 1;
 }
 
-fn part1(lines: &Vec<Line>) -> i32 {
-    let mut board = vec![[0 as i32; 1024]; 1024];
+fn part1(lines: &[Line]) -> i32 {
+    let mut board = vec![[0; 1024]; 1024];
     for line in lines {
         if line.0 == line.2 || line.1 == line.3 {
             draw_line(*line, &mut board)
@@ -27,8 +27,8 @@ fn part1(lines: &Vec<Line>) -> i32 {
     board.iter().flatten().filter(|&x| x > &1).count() as i32
 }
 
-fn part2(lines: &Vec<Line>) -> i32 {
-    let mut board = vec![[0 as i32; 1024]; 1024];
+fn part2(lines: &[Line]) -> i32 {
+    let mut board = vec![[0; 1024]; 1024];
     for line in lines {
         draw_line(*line, &mut board)
     }
